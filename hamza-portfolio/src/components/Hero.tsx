@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { personalInfo, roles } from "@/data/portfolio";
 import Terminal from "./Terminal";
 
@@ -48,6 +49,26 @@ export default function Hero() {
             </a>
             <a href="#projects" className="btn-secondary">
               View Projects
+            </a>
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-4">
+            <a
+              href={`tel:${personalInfo.phone.replace(/\s/g, "")}`}
+              className="btn-secondary"
+            >
+              <Phone size={16} />
+              Call Me
+            </a>
+            <a
+              href={personalInfo.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+              style={{ borderColor: "rgba(37,211,102,0.35)", color: "#25D366" }}
+            >
+              <FaWhatsapp size={16} />
+              WhatsApp
             </a>
           </div>
 
