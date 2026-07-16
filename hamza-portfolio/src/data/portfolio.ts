@@ -4,6 +4,7 @@ export const personalInfo = {
   location: "Karachi, Pakistan",
   email: "syedahmedarees@gmail.com",
   phone: "+92 335 3347219",
+  whatsapp: "https://wa.me/923353347219",
   linkedin: "https://www.linkedin.com/in/syed-h-a39884288",
   github: "https://github.com/syedhamzaarees",
   resumeUrl: "/resume.pdf",
