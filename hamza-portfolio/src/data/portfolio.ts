@@ -77,6 +77,16 @@ export const skillCategories: SkillCategory[] = [
       "ArgoCD",
     ],
   },
+  {
+    category: "Deployment & Automation",
+    items: [
+      "GitHub → Vercel CI/CD",
+      "Continuous Deployment",
+      "EmailJS Serverless Integration",
+      "AI-Assisted Development",
+      "Next.js / TypeScript",
+    ],
+  },
 ];
 
 export type ExperienceItem = {
@@ -118,9 +128,50 @@ export type ProjectItem = {
   description: string;
   tech: string[];
   type: string;
+  link?: string;
 };
 
 export const projects: ProjectItem[] = [
+  {
+    title: "Wanderlust — MERN on AWS EKS",
+    type: "End-to-End DevSecOps Pipeline",
+    description:
+      "Deployed a three-tier MERN application on AWS EKS through a full DevSecOps pipeline: Jenkins CI, OWASP dependency scanning, SonarQube quality gates, Trivy filesystem scans, ArgoCD GitOps delivery, and Prometheus/Grafana monitoring via Helm. Configured Jenkins master/worker nodes and automated build-to-deploy on every push.",
+    tech: ["AWS EKS", "Jenkins", "ArgoCD", "SonarQube", "Trivy", "Prometheus", "Grafana"],
+    link: "https://github.com/syedhamzaarees/Wanderlust-Mega-Project",
+  },
+  {
+    title: "Flask-Nginx-MySQL Automation",
+    type: "CI/CD Automation",
+    description:
+      "Containerized a Flask + Nginx + MySQL stack and fully automated its delivery with a Jenkins pipeline triggered by GitHub Webhooks — builds Docker images, pushes to Docker Hub, and redeploys via Docker Compose on every commit, using reusable Jenkins Shared Libraries.",
+    tech: ["Jenkins", "Docker", "GitHub Webhooks", "Flask", "Nginx", "MySQL"],
+    link: "https://github.com/syedhamzaarees/Flask-Nginx-MySQL-Automation",
+  },
+  {
+    title: "Flask · Nginx · MySQL — 3-Tier Application",
+    type: "Containerized Web App",
+    description:
+      "Built and deployed a containerized 3-tier application with Flask, Nginx and MySQL, orchestrated via Docker Compose. Implemented an Nginx reverse proxy for secure routing and persistent MySQL storage using Docker volumes.",
+    tech: ["Flask", "Nginx", "MySQL", "Docker Compose"],
+    link: "https://github.com/syedhamzaarees/Flask-based-web-application-with-Nginx-reverse-proxy-and-MySQL-database-fully-containerized-using-D",
+  },
+  {
+    title: "Jenkins Shared Libraries",
+    type: "DevOps Tooling",
+    description:
+      "Engineered reusable Groovy Shared Libraries for Jenkins to standardize build, test, deploy and notification steps across pipelines — following DRY principles and compatible with both Declarative and Scripted pipeline syntax.",
+    tech: ["Jenkins", "Groovy", "CI/CD"],
+    link: "https://github.com/syedhamzaarees/Jenkins-Shared-Libraries",
+  },
+  {
+    title: "Docker + GitHub Lab",
+    type: "Containerization",
+    description:
+      "A focused Flask application containerized with Docker, built as a hands-on lab for Dockerfile authoring, image builds and container networking fundamentals.",
+    tech: ["Docker", "Flask"],
+    link: "https://github.com/syedhamzaarees/docker-github-lab",
+  },
   {
     title: "Zero Trust & Post-Quantum Cryptography Research",
     type: "Research Project",
@@ -129,25 +180,12 @@ export const projects: ProjectItem[] = [
     tech: ["Zero Trust", "PQC", "ML-KEM", "NIST FIPS 203"],
   },
   {
-    title: "Wanderlust — MERN on AWS EKS",
-    type: "Team Collaboration",
+    title: "This Portfolio — AI-Assisted Build & Deploy Pipeline",
+    type: "DevOps Integration",
     description:
-      "Deployed an enterprise-grade MERN application on AWS EKS using GitOps workflows with ArgoCD for automated Kubernetes deployments. Integrated Prometheus and Grafana for observability and took part in peer code reviews and Agile planning.",
-    tech: ["AWS EKS", "Kubernetes", "ArgoCD", "Prometheus", "Grafana"],
-  },
-  {
-    title: "Flask · Nginx · MySQL — 3-Tier Application",
-    type: "Personal Project",
-    description:
-      "Built and deployed a containerized 3-tier application with Flask, Nginx and MySQL, orchestrated via Docker Compose. Implemented an Nginx reverse proxy for secure routing and improved deployment portability.",
-    tech: ["Flask", "Nginx", "MySQL", "Docker Compose"],
-  },
-  {
-    title: "Jenkins Shared Libraries Automation",
-    type: "Personal Project",
-    description:
-      "Engineered reusable Groovy Shared Libraries for Jenkins to standardize CI/CD logic and remove repetitive pipeline configuration across multiple projects.",
-    tech: ["Jenkins", "Groovy", "CI/CD"],
+      "Designed and shipped this portfolio itself as a DevOps exercise: a Next.js/TypeScript/Tailwind site built with AI-assisted development (Claude), version-controlled on GitHub, and wired to Vercel for continuous deployment — every push to main automatically rebuilds and redeploys the live site. Contact form integrated with EmailJS for serverless email delivery.",
+    tech: ["Next.js", "GitHub", "Vercel CI/CD", "EmailJS", "AI-Assisted Development"],
+    link: "https://github.com/syedhamzaarees/hamza-portfolio",
   },
 ];
 
