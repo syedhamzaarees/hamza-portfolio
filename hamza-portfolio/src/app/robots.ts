@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://hamzaarees.dev/sitemap.xml",
+    sitemap: "https://hamza-portfolio-fs6t.vercel.app/sitemap.xml",
   };
 }
