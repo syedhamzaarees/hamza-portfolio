@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, Github, Send, Check } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { Mail, Phone, Linkedin, Github, Send, Check, Loader2 } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
+
+const EMAILJS_SERVICE_ID = "service_nb351rf";
+const EMAILJS_TEMPLATE_ID = "template_nyo8cdv";
+const EMAILJS_PUBLIC_KEY = "YESmgTh6HUFG7Rd4u";
 
 const contactLinks = [
   { icon: Mail, label: personalInfo.email, href: `mailto:${personalInfo.email}` },
@@ -13,13 +18,26 @@ const contactLinks = [
 ];
 
 export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
 
-  // NOTE: wire this up to EmailJS (or any form backend) before going live.
-  // See README.md — "Connecting the contact form" for the 3-step setup.
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sent");
+    setStatus("sending");
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        e.currentTarget,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      setStatus("sent");
+      e.currentTarget.reset();
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setStatus("error");
+    }
   }
 
   return (
@@ -63,12 +81,14 @@ export default function Contact() {
           <div className="grid gap-5 sm:grid-cols-2">
             <input
               required
+              name="name"
               type="text"
               placeholder="Your name"
               className="rounded-xl border border-line bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted focus:border-secondary"
             />
             <input
               required
+              name="email"
               type="email"
               placeholder="Your email"
               className="rounded-xl border border-line bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted focus:border-secondary"
@@ -76,21 +96,38 @@ export default function Contact() {
           </div>
           <textarea
             required
+            name="message"
             rows={5}
             placeholder="Tell me about the role or project..."
             className="rounded-xl border border-line bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted focus:border-secondary"
           />
-          <button type="submit" className="btn-primary self-start">
-            {status === "sent" ? (
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="btn-primary self-start disabled:opacity-60"
+          >
+            {status === "sending" && (
               <>
-                <Check size={16} /> Sent
+                <Loader2 size={16} className="animate-spin" /> Sending...
               </>
-            ) : (
+            )}
+            {status === "sent" && (
+              <>
+                <Check size={16} /> Sent — I'll reply soon
+              </>
+            )}
+            {(status === "idle" || status === "error") && (
               <>
                 <Send size={16} /> Send Message
               </>
             )}
           </button>
+          {status === "error" && (
+            <p className="text-sm text-red-400">
+              Something went wrong — please email me directly at{" "}
+              {personalInfo.email}.
+            </p>
+          )}
         </motion.form>
       </div>
     </section>
