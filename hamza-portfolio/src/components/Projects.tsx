@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Github, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
 
 export default function Projects() {
@@ -43,6 +44,19 @@ export default function Projects() {
                 </span>
               ))}
             </div>
+
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex w-fit items-center gap-2 text-sm text-secondary transition-colors hover:text-primary"
+              >
+                <Github size={16} />
+                View on GitHub
+                <ArrowUpRight size={14} />
+              </a>
+            )}
           </motion.div>
         ))}
       </div>
