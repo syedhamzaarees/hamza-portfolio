@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Mail, Phone, Linkedin, Github, Send, Check, Loader2 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { personalInfo } from "@/data/portfolio";
 
 const EMAILJS_SERVICE_ID = "service_nb351rf";
@@ -13,6 +14,7 @@ const EMAILJS_PUBLIC_KEY = "YESmgTh6HUFG7Rd4u";
 const contactLinks = [
   { icon: Mail, label: personalInfo.email, href: `mailto:${personalInfo.email}` },
   { icon: Phone, label: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, "")}` },
+  { icon: FaWhatsapp, label: "WhatsApp", href: personalInfo.whatsapp },
   { icon: Linkedin, label: "LinkedIn", href: personalInfo.linkedin },
   { icon: Github, label: "GitHub", href: personalInfo.github },
 ];
@@ -132,4 +134,4 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+   }
