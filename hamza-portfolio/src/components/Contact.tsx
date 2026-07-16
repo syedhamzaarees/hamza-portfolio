@@ -8,7 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { personalInfo } from "@/data/portfolio";
 
 const EMAILJS_SERVICE_ID = "service_nb351rf";
-const EMAILJS_TEMPLATE_ID = "template_nyo8cdv";
+const EMAILJS_TEMPLATE_ID = "template_om8c374";
 const EMAILJS_PUBLIC_KEY = "YESmgTh6HUFG7Rd4u";
 
 const contactLinks = [
